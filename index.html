@@ -17,28 +17,42 @@
       text-align: center;
     }
 
-    /* Hero completo */
-    header {
+    /* Hero Banner */
+    .hero {
       height: 100vh;
-      background: url('https://images.unsplash.com/photo-1504199362162-4b5f8f2f6e8d?auto=format&fit=crop&w=1500&q=80') center/cover no-repeat;
+      background: url('https://i.pinimg.com/236x/16/f4/f6/16f4f6e15c588040ba6d44d1a9c166ff.jpg') center/cover no-repeat;
       color: white;
       display: flex;
-      flex-direction: column;
       justify-content: center;
       align-items: center;
+      position: relative;
+      text-align: center;
       padding: 2rem;
-      text-shadow: 0 2px 5px rgba(0,0,0,0.4);
+      text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
     }
 
-    h1 {
-      font-size: 4rem;
-      margin: 0;
+    .hero-content {
+      background-color: rgba(0, 0, 0, 0.3);
+      padding: 2rem;
+      border-radius: 1rem;
+    }
+
+    .hero h1 {
       font-family: 'Dancing Script', cursive;
+      font-size: 5rem;
+      margin: 0;
     }
 
-    header p {
+    .hero p {
       font-size: 1.5rem;
-      margin-top: 1rem;
+      letter-spacing: 2px;
+      margin-top: 0.5rem;
+    }
+
+    .flower-icon {
+      width: 60px;
+      margin-bottom: 1rem;
+      filter: invert(1);
     }
 
     .section {
@@ -96,22 +110,30 @@
   </style>
 </head>
 <body>
-  <header data-aos="fade-down">
-    <h1>¡Estás invitado a los XV de Emily!</h1>
-    <p>12 de agosto de 2025</p>
+
+  <!-- HERO -->
+  <header class="hero" data-aos="fade-down">
+    <div class="hero-content">
+      <img src="https://cdn-icons-png.flaticon.com/512/796/796562.png" alt="Flor decorativa" class="flower-icon">
+      <h1>Emily</h1>
+      <p>Mis Quince Años</p>
+    </div>
   </header>
 
+  <!-- DESCRIPCIÓN -->
   <div class="section" data-aos="fade-up">
     <h2>¡Acompáñanos en esta fecha tan especial!</h2>
     <p>El evento se llevará a cabo en nuestra casa, rodeados de amigos, música y mucha alegría 🎉</p>
   </div>
 
+  <!-- CONFIRMACIÓN -->
   <div class="section" data-aos="zoom-in">
     <h2>Confirmá tu asistencia</h2>
     <p>Por favor, completá el siguiente formulario:</p>
     <a href="https://docs.google.com/forms/d/e/1FAIpQLSdDUMMYFORMURL/viewform" class="btn-confirm" target="_blank">Confirmar Asistencia</a>
   </div>
 
+  <!-- GALERÍA -->
   <div class="section" data-aos="flip-left">
     <h2>Galería de fotos</h2>
     <div class="gallery">
@@ -121,11 +143,12 @@
     </div>
   </div>
 
+  <!-- FOOTER -->
   <footer data-aos="fade-up">
     <p>Con amor, Emily 💕</p>
   </footer>
 
-  <!-- JS de AOS -->
+  <!-- AOS JS -->
   <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
   <script>
     AOS.init();
