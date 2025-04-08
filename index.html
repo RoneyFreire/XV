@@ -1,30 +1,50 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>XV Años de Emily</title>
+  <!-- Fuentes de Google -->
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Open+Sans&display=swap" rel="stylesheet">
+  <!-- CSS de AOS -->
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
   <style>
     body {
       margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background: #ffe4f2;
+      font-family: 'Open Sans', sans-serif;
+      background: linear-gradient(135deg, #a2d9ff, #e0f7ff);
       color: #333;
       text-align: center;
     }
+
+    /* Hero completo */
     header {
-      background: #f8b1d8;
-      padding: 2rem;
+      height: 100vh;
+      background: url('https://images.unsplash.com/photo-1504199362162-4b5f8f2f6e8d?auto=format&fit=crop&w=1500&q=80') center/cover no-repeat;
       color: white;
-    }
-    h1 {
-      font-size: 3rem;
-      margin: 0;
-    }
-    .section {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
       padding: 2rem;
+      text-shadow: 0 2px 5px rgba(0,0,0,0.4);
     }
+
+    h1 {
+      font-size: 4rem;
+      margin: 0;
+      font-family: 'Dancing Script', cursive;
+    }
+
+    header p {
+      font-size: 1.5rem;
+      margin-top: 1rem;
+    }
+
+    .section {
+      padding: 3rem 2rem;
+    }
+
     iframe {
       width: 90%;
       max-width: 600px;
@@ -32,55 +52,83 @@
       border: none;
       border-radius: 1rem;
     }
+
     .gallery {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
       gap: 1rem;
     }
+
     .gallery img {
       width: 200px;
       height: 200px;
       object-fit: cover;
       border-radius: 1rem;
       box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      transition: transform 0.3s ease;
     }
+
+    .gallery img:hover {
+      transform: scale(1.05);
+    }
+
     footer {
-      background: #f8b1d8;
+      background: #80c1ff;
       padding: 1rem;
       color: white;
+    }
+
+    .btn-confirm {
+      background-color: #4da6ff;
+      color: white;
+      padding: 1rem 2rem;
+      text-decoration: none;
+      border-radius: 5px;
+      display: inline-block;
+      margin-top: 1rem;
+      transition: background-color 0.3s ease;
+    }
+
+    .btn-confirm:hover {
+      background-color: #3399ff;
     }
   </style>
 </head>
 <body>
-  <header>
+  <header data-aos="fade-down">
     <h1>¡Estás invitado a los XV de Emily!</h1>
     <p>12 de agosto de 2025</p>
   </header>
 
-  <div class="section">
-    <h2>¡Acompañanos en esta fecha tan especial!</h2>
-    <p>El evento será en nuestra casa, rodeados de amigos, música y mucha alegría 🎉</p>
+  <div class="section" data-aos="fade-up">
+    <h2>¡Acompáñanos en esta fecha tan especial!</h2>
+    <p>El evento se llevará a cabo en nuestra casa, rodeados de amigos, música y mucha alegría 🎉</p>
   </div>
 
-  <div class="section">
+  <div class="section" data-aos="zoom-in">
     <h2>Confirmá tu asistencia</h2>
-    <p>Por favor completá el siguiente formulario:</p>
-    <!-- Reemplazá el LINK abajo con tu Google Form -->
-    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdDUMMYFORMURL/viewform?embedded=true">Cargando formulario…</iframe>
+    <p>Por favor, completá el siguiente formulario:</p>
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLSdDUMMYFORMURL/viewform" class="btn-confirm" target="_blank">Confirmar Asistencia</a>
   </div>
 
-  <div class="section">
+  <div class="section" data-aos="flip-left">
     <h2>Galería de fotos</h2>
     <div class="gallery">
-      <img src="https://via.placeholder.com/200x200.png?text=Emily+1" alt="Foto 1" />
-      <img src="https://via.placeholder.com/200x200.png?text=Emily+2" alt="Foto 2" />
-      <img src="https://via.placeholder.com/200x200.png?text=Emily+3" alt="Foto 3" />
+      <img src="https://via.placeholder.com/200x200.png?text=Emily+1" alt="Foto 1">
+      <img src="https://via.placeholder.com/200x200.png?text=Emily+2" alt="Foto 2">
+      <img src="https://via.placeholder.com/200x200.png?text=Emily+3" alt="Foto 3">
     </div>
   </div>
 
-  <footer>
+  <footer data-aos="fade-up">
     <p>Con amor, Emily 💕</p>
   </footer>
+
+  <!-- JS de AOS -->
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init();
+  </script>
 </body>
 </html>
