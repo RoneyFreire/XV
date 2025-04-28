@@ -5,44 +5,83 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>XV Años de Emily</title>
   <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <link rel="icon" href="https://i.postimg.cc/8CfvhS7Y/corona-favicon.png" type="image/png">
+  
   <style>
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       margin: 0;
       font-family: 'Open Sans', sans-serif;
       background: linear-gradient(135deg, #a2d9ff, #e0f7ff);
       color: #333;
       text-align: center;
+      overflow-x: hidden;
+    }
+
+    /* Fondo de partículas */
+    #particles-js {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      top: 0;
+      left: 0;
     }
 
     /* HERO */
     .hero {
-  height: 100vh;
-  background-image: url('https://i.postimg.cc/2j2SkGTS/759810d0-7be3-4da1-af8a-fd6d8586d93f.jpg');
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-  position: relative; /* necesario para que el logo se posicione dentro */
-  overflow: hidden;
-}
+      height: 100vh;
+      background-image: url('https://i.postimg.cc/2j2SkGTS/759810d0-7be3-4da1-af8a-fd6d8586d93f.jpg');
+      background-position: center;
+      background-size: cover;
+      background-repeat: no-repeat;
+      position: relative;
+      overflow: hidden;
+    }
 
-.hero-logo {
-  position: absolute;
-  top: 45%;    /* mueve verticalmente */
-  left: 50%;   /* centra horizontalmente */
-  transform: translateX(-50%); /* centra visualmente */
-  width: 200vw;   /* tamaño responsivo */
-  max-width: 600px;
-  height: auto;
-}
+    .hero-logo {
+      position: absolute;
+      top: 45%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 200vw;
+      max-width: 600px;
+      height: auto;
+      animation: float 3s ease-in-out infinite;
+    }
 
-    @media (max-width: 600px) {
-      .hero img.hero-logo {
-        width: 80%;
+    /* Flotando */
+    @keyframes float {
+      0%, 100% { transform: translate(-50%, -48%); }
+      50% { transform: translate(-50%, -52%); }
+    }
+
+    /* Flores decorativas */
+    .flower {
+      position: absolute;
+      width: 50px;
+      animation: fall 10s linear infinite;
+      opacity: 0.7;
+    }
+
+    @keyframes fall {
+      0% {
+        top: -10%;
+        transform: translateX(0) rotate(0deg);
+      }
+      100% {
+        top: 110%;
+        transform: translateX(200px) rotate(360deg);
       }
     }
 
     .section {
       padding: 3rem 2rem;
+      position: relative;
+      z-index: 1;
     }
 
     .gallery {
@@ -57,27 +96,29 @@
       height: 200px;
       object-fit: cover;
       border-radius: 1rem;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-      transition: transform 0.3s ease;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
     .gallery img:hover {
-      transform: scale(1.05);
+      transform: scale(1.1);
+      box-shadow: 0 6px 25px rgba(0,0,0,0.4);
     }
 
     .btn-confirm {
-      background-color: #4da6ff;
+      background: linear-gradient(45deg, #4da6ff, #3399ff);
       color: white;
       padding: 1rem 2rem;
       text-decoration: none;
-      border-radius: 5px;
+      border-radius: 30px;
       display: inline-block;
       margin-top: 1rem;
-      transition: background-color 0.3s ease;
+      transition: transform 0.3s ease, background 0.3s ease;
     }
 
     .btn-confirm:hover {
-      background-color: #3399ff;
+      transform: scale(1.05);
+      background: linear-gradient(45deg, #3399ff, #4da6ff);
     }
 
     footer {
@@ -89,42 +130,169 @@
 </head>
 <body>
 
-  <!-- HERO CON FONDO Y PNG -->
-  <header class="hero" data-aos="fade-down">
-    <img src="https://i.postimg.cc/XJ6K2QdW/Untitled.png" alt="Logo de los XV" class="hero-logo">
-  </header>
+<!-- Partículas fondo -->
+<div id="particles-js"></div>
 
-  <!-- DESCRIPCIÓN -->
-  <div class="section" data-aos="fade-up">
-    <h2>¡Acompáñanos en esta fecha tan especial!</h2>
-    <p>El evento se llevará a cabo en nuestra casa, rodeados de amigos, música y mucha alegría 🎉</p>
+<!-- Flores flotando -->
+<img src="https://i.postimg.cc/wTv5J6cr/flower.png" class="flower" style="left:10%;">
+<img src="https://i.postimg.cc/wTv5J6cr/flower.png" class="flower" style="left:30%; animation-delay:2s;">
+<img src="https://i.postimg.cc/wTv5J6cr/flower.png" class="flower" style="left:50%; animation-delay:4s;">
+<img src="https://i.postimg.cc/wTv5J6cr/flower.png" class="flower" style="left:70%; animation-delay:1s;">
+<img src="https://i.postimg.cc/wTv5J6cr/flower.png" class="flower" style="left:90%; animation-delay:3s;">
+
+<!-- HERO -->
+<header class="hero" data-aos="fade-down">
+  <img src="https://i.postimg.cc/XJ6K2QdW/Untitled.png" alt="Logo de los XV" class="hero-logo">
+</header>
+
+<!-- DESCRIPCIÓN -->
+<div class="section" data-aos="fade-up">
+  <h2>¡Acompáñanos en esta fecha tan especial!</h2>
+  <p>El evento se llevará a cabo en nuestra casa, rodeados de amigos, música y mucha alegría 🎉</p>
+</div>
+
+<!-- FRASE BONITA -->
+<div class="section" data-aos="zoom-in-up">
+  <blockquote style="font-style: italic; font-size: 1.4rem; color: #555;">
+    "Hoy dejo atrás la niñez, pero nunca dejaré los sueños que me acompañaron hasta aquí."
+  </blockquote>
+</div>
+
+<!-- CONTADOR REGRESIVO -->
+<div class="section" data-aos="fade-up">
+  <h2>¿Cuánto falta para la gran fiesta?</h2>
+  <div id="countdown" style="font-size: 2rem; font-weight: bold; margin-top: 1rem;"></div>
+</div>
+
+<!-- CONFIRMACIÓN -->
+<div class="section" data-aos="zoom-in">
+  <h2>Confirmá tu asistencia</h2>
+  <p>Por favor, completá el siguiente formulario:</p>
+  <a href="https://docs.google.com/forms/d/e/1FAIpQLSdDUMMYFORMURL/viewform" class="btn-confirm" target="_blank">Confirmar Asistencia</a>
+</div>
+
+<!-- MAPA DE UBICACIÓN -->
+<div class="section" data-aos="fade-up">
+  <h2>¿Cómo llegar?</h2>
+  <iframe 
+    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13099.215847328749!2d-56.20099648419191!3d-34.83602115002375!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95a1d5297e40ebe5%3A0x84dd4d9839f9d6f8!2sSodimac!5e0!3m2!1ses!2suy!4v1745861401023!5m2!1ses!2suy"
+    width="300" 
+    height="300" 
+    style="border:0; border-radius: 1rem;" 
+    allowfullscreen="" 
+    loading="lazy">
+  </iframe>
+</div>
+
+<!-- GALERÍA -->
+<div class="section" data-aos="flip-left">
+  <h2>Galería de fotos</h2>
+  <div class="gallery">
+    <img src="https://via.placeholder.com/200x200.png?text=Emily+1" alt="Foto 1">
+    <img src="https://via.placeholder.com/200x200.png?text=Emily+2" alt="Foto 2">
+    <img src="https://via.placeholder.com/200x200.png?text=Emily+3" alt="Foto 3">
   </div>
+</div>
 
-  <!-- CONFIRMACIÓN -->
-  <div class="section" data-aos="zoom-in">
-    <h2>Confirmá tu asistencia</h2>
-    <p>Por favor, completá el siguiente formulario:</p>
-    <a href="https://docs.google.com/forms/d/e/1FAIpQLSdDUMMYFORMURL/viewform" class="btn-confirm" target="_blank">Confirmar Asistencia</a>
-  </div>
+<!-- FOOTER -->
+<footer data-aos="fade-up">
+  <p>Con amor, Emily 💕</p>
+</footer>
 
-  <!-- GALERÍA -->
-  <div class="section" data-aos="flip-left">
-    <h2>Galería de fotos</h2>
-    <div class="gallery">
-      <img src="https://via.placeholder.com/200x200.png?text=Emily+1" alt="Foto 1">
-      <img src="https://via.placeholder.com/200x200.png?text=Emily+2" alt="Foto 2">
-      <img src="https://via.placeholder.com/200x200.png?text=Emily+3" alt="Foto 3">
-    </div>
-  </div>
+<!-- MÚSICA DE FONDO -->
+<audio id="bg-music" loop muted preload="auto">
+  <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mp3">
+  Tu navegador no soporta audio HTML5.
+</audio>
 
-  <!-- FOOTER -->
-  <footer data-aos="fade-up">
-    <p>Con amor, Emily 💕</p>
-  </footer>
+<!-- Botón para controlar la música -->
+<button id="music-btn" style="
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #4da6ff;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 50px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  cursor: pointer;
+  z-index: 1000;
+">
+  🔇
+</button>
 
-  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
-  <script>
-    AOS.init();
-  </script>
+<script>
+  const bgMusic = document.getElementById('bg-music');
+  const musicBtn = document.getElementById('music-btn');
+  let isPlaying = false;
+
+  musicBtn.addEventListener('click', () => {
+    if (!isPlaying) {
+      bgMusic.muted = false; // Desmutear
+      const playPromise = bgMusic.play();
+
+      if (playPromise !== undefined) {
+        playPromise.then(() => {
+          musicBtn.textContent = '🔊';
+          isPlaying = true;
+        }).catch(error => {
+          console.error('Error al reproducir:', error);
+          musicBtn.textContent = '🔇';
+          isPlaying = false;
+        });
+      }
+    } else {
+      bgMusic.pause();
+      musicBtn.textContent = '🔇';
+      isPlaying = false;
+    }
+  });
+</script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
+<script>
+  AOS.init();
+
+  // Partículas fondo
+  particlesJS('particles-js', {
+    "particles": {
+      "number": { "value": 60 },
+      "size": { "value": 3 },
+      "move": { "speed": 1 },
+      "line_linked": { "enable": false },
+      "color": { "value": "#ffffff" },
+      "opacity": { "value": 0.5 }
+    }
+  });
+
+  // CONTADOR REGRESIVO
+  const eventDate = new Date("2025-06-21T20:00:00"); 
+  const countdown = document.getElementById('countdown');
+
+  function updateCountdown() {
+    const now = new Date();
+    const diff = eventDate - now;
+
+    if (diff <= 0) {
+      countdown.innerHTML = "¡Hoy es el gran día! 🎉";
+      return;
+    }
+
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+    const minutes = Math.floor((diff / (1000 * 60)) % 60);
+    const seconds = Math.floor((diff / 1000) % 60);
+
+    countdown.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+  }
+
+  setInterval(updateCountdown, 1000);
+  updateCountdown();
+</script>
+
 </body>
 </html>
