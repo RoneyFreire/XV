@@ -1,0 +1,328 @@
+body {
+    font-family: 'Montserrat', sans-serif;
+    background: #f0faff;
+    color: #34495e;
+    margin: 0;
+    padding: 0;
+    scroll-behavior: smooth;
+    transition: background 1s ease;
+}
+body.seccion-fiesta-activa {
+    background: #fff5f5;
+  }
+
+h4 {
+    font-size: 2rem;
+  }
+  
+  p {
+    font-size: 1.1rem;
+  }
+  
+  @media (max-width: 576px) {
+    h4 {
+      font-size: 1.5rem;
+    }
+    p {
+      font-size: 1rem;
+    }
+  }
+
+ /* Portada */
+ .portada {
+    background: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1950&q=80') center/cover no-repeat;
+    height: 100vh;
+    background-attachment: scroll; /* Cambiado de fixed a scroll */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+.portada::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(126, 214, 223, 0.5); /* celeste semitransparente */
+    z-index: 0;
+}
+  .logo-portada {
+    position: relative;
+    z-index: 1;
+  }
+  .logo-portada img {
+    width: 250px;
+  }
+  .scroll-down {
+    position: absolute;
+    bottom: 20px;
+    font-size: 2rem;
+    cursor: pointer;
+    color: white;
+  }
+
+  /* --- Botón flotante tipo widget --- */
+.widget-musica {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 9999;
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(6px);
+    padding: 10px;
+    border-radius: 50%;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    transition: transform 0.3s ease;
+  }
+  
+  .widget-musica img {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+  }
+  
+  .widget-musica img:hover {
+    transform: scale(1.1) rotate(5deg);
+  }
+  
+  .hidden {
+    display: none;
+  }
+  
+  @media (max-width: 576px) {
+    .widget-musica {
+      bottom: 15px;
+      right: 15px;
+      padding: 8px;
+    }
+  
+    .widget-musica img {
+      width: 36px;
+      height: 36px;
+    }
+  }
+  
+  /* Audio */
+
+  .toast-audio {
+    position: fixed;
+    bottom: 90px;
+    right: 20px;
+    background: #fff;
+    color: #34495e;
+    padding: 12px 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    font-size: 0.9rem;
+    z-index: 9998;
+    animation: aparecerDesaparecer 6s forwards;
+  }
+  
+  @keyframes aparecerDesaparecer {
+    0% { opacity: 0; transform: translateY(20px); }
+    10% { opacity: 1; transform: translateY(0); }
+    90% { opacity: 1; }
+    100% { opacity: 0; display: none; }
+  }
+
+  .botonAudio:hover {
+    transform: scale(1.1) rotate(10deg);
+    box-shadow: 0px 6px 15px rgba(0,0,0,0.3);
+  }
+  @media (max-width: 576px) {
+    .botonAudio {
+      width: 45px;
+      height: 45px;
+    }
+  }
+
+  .hidden {
+    display: none;
+  }
+  .latido {
+    animation: pulse 1.5s infinite;
+  }
+  @keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.15); }
+    100% { transform: scale(1); }
+  }
+  /* Fondo alterno para secciones especiales */
+.ceremonia-fiesta, .confirmar-asistencia, .regalos {
+    background: linear-gradient(to bottom, #e0f7ff, #c2e9fb);
+}
+  
+  /* Cuenta regresiva números */
+.cuenta-regresiva .num_cuenta {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #70a1ff;
+    transition: transform 0.3s;
+}
+  .cuenta-regresiva .num_cuenta:has(+ p) {
+    animation: pop 0.3s;
+  }
+  @keyframes pop {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.3); }
+    100% { transform: scale(1); }
+  }
+  @media (max-width: 576px) {
+    .cuenta-regresiva .row {
+      flex-wrap: wrap;
+    }
+    .cuenta-regresiva .col-3 {
+      flex: 0 0 50%;
+      max-width: 50%;
+      margin-bottom: 10px;
+    }
+  }
+  
+  /* Galería */
+.item-galeria img {
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(112, 161, 255, 0.5);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.item-galeria img:hover {
+    transform: scale(1.07);
+    box-shadow: 0 6px 20px rgba(112, 161, 255, 0.6);
+}
+@media (max-width: 768px) {
+    .item-galeria {
+      margin-bottom: 15px;
+    }
+  }
+  
+/* Footer */
+footer {
+    background: linear-gradient(to right, #70a1ff, #7ed6df);
+    color: white;
+    font-size: 0.9rem;
+    padding: 20px;
+    text-align: center;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+}
+
+  
+  /* Animaciones */
+  .fade-in-portada {
+    opacity: 0;
+    animation: fadeInPortada 2s forwards;
+  }
+  .bounce-in {
+    animation: bounceIn 1s;
+  }
+  .bounce-in:hover {
+    animation: rotateIcon 0.6s;
+  }
+  @keyframes fadeInPortada {
+    to { opacity: 1; }
+  }
+  @keyframes bounceIn {
+    0% { transform: scale(0.5); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+  }
+  @keyframes rotateIcon {
+    0% { transform: rotate(0deg); }
+    50% { transform: rotate(15deg); }
+    100% { transform: rotate(0deg); }
+  }
+  
+  /* Secciones */
+  section {
+    scroll-margin-top: 70px;
+    padding: 60px 20px;
+    transition: background 0.5s ease;
+  }
+  
+  /* Fondo de secciones alternas */
+  .ceremonia-fiesta, .confirmar-asistencia, .regalos {
+    background: linear-gradient(to bottom, #f5f7fa, #c3cfe2);
+  }
+  
+  /* Loader */
+  #loader-wrapper {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: #ffffff;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.6s ease;
+  }
+  #loader {
+    border: 8px solid #f0faff;
+    border-top: 8px solid #7ed6df;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    animation: spin 1s linear infinite;
+}
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  .loaded #loader-wrapper {
+    opacity: 0;
+    pointer-events: none;
+  }
+  /* --- Animaciones Suaves para Secciones --- */
+section {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+section.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Botones */
+.btn-primary {
+    background: linear-gradient(45deg, #7ed6df, #70a1ff);
+    border: none;
+    border-radius: 50px;
+    padding: 10px 25px;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+    color: white;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease;
+}
+.btn-primary:hover {
+    background: linear-gradient(45deg, #70a1ff, #7ed6df);
+    transform: scale(1.05);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+}
+
+/* --- Mejorar el efecto de la cuenta regresiva --- */
+.cuenta-regresiva .num_cuenta {
+    animation: pop 1.5s infinite alternate;
+}
+
+/* --- Imagen de portada rebote suave --- */
+.logo-portada img {
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+}
+
+/* --- Animar botones de audio --- */
+.botonAudio {
+    transition: transform 0.5s, box-shadow 0.5s;
+}
+.botonAudio:hover {
+    transform: rotate(10deg) scale(1.1);
+}
