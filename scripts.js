@@ -34,11 +34,13 @@ function playAudio() {
   var audio = document.getElementById("audioPrueba");
   var btnPlay = document.getElementById("btnPlay");
   var btnPausa = document.getElementById("btnPausa");
+  var widget = document.getElementById("musicWidget");
 
-  if (audio && btnPlay && btnPausa) {
+  if (audio && btnPlay && btnPausa && widget) {
     audio.play();
     btnPlay.classList.add("hidden");
     btnPausa.classList.remove("hidden");
+    widget.classList.add("latido");
   }
 }
 
@@ -46,11 +48,13 @@ function pauseAudio() {
   var audio = document.getElementById("audioPrueba");
   var btnPlay = document.getElementById("btnPlay");
   var btnPausa = document.getElementById("btnPausa");
+  var widget = document.getElementById("musicWidget");
 
-  if (audio && btnPlay && btnPausa) {
+  if (audio && btnPlay && btnPausa && widget) {
     audio.pause();
     btnPlay.classList.remove("hidden");
     btnPausa.classList.add("hidden");
+    widget.classList.remove("latido");
   }
 }
 
