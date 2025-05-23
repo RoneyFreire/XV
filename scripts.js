@@ -1,7 +1,7 @@
 // ============================
 // Cuenta regresiva
 // ============================
-const fechaDelEvento = new Date("2025-11-23T21:00:00").getTime();
+const fechaDelEvento = new Date("2025-06-21T21:00:00").getTime();
 
 const diasElemento = document.getElementById("dias");
 const horasElemento = document.getElementById("horas");
@@ -28,7 +28,7 @@ if (diasElemento && horasElemento && minElemento && segElemento) {
 }
 
 // ============================
-// Reproducir/Pausar audio
+// Reproducir/Pausar audio manual
 // ============================
 function playAudio() {
   var audio = document.getElementById("audioPrueba");
@@ -69,9 +69,10 @@ function scrollToContent() {
 }
 
 // ============================
-// Inicializar AOS
+// Todo el DOM cargado
 // ============================
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
+  // AOS
   if (typeof AOS !== "undefined") {
     AOS.init({
       duration: 1000,
@@ -81,57 +82,61 @@ document.addEventListener('DOMContentLoaded', function() {
     console.error("AOS no está definido.");
   }
 
-  
+  // Animación de bienvenida + Música al tocar
+  const overlay = document.getElementById('intro-overlay');
+  const audio = document.getElementById('audioPrueba');
+
+  const dismissIntro = () => {
+    if (overlay) {
+      overlay.classList.add('fade-out');
+      setTimeout(() => overlay.style.display = 'none', 1000);
+    }
+    if (audio) {
+      audio.play().catch(err => {
+        console.warn("La música no se pudo reproducir automáticamente:", err);
+      });
+    }
+  };
+
+  if (overlay) {
+    overlay.addEventListener('click', dismissIntro);
+    overlay.addEventListener('touchstart', dismissIntro);
+  }
+
+  // Activar color de fondo en sección fiesta
+  const fiestaSection = document.querySelector('.ceremonia-fiesta');
+  const fiestaObserver = new IntersectionObserver(entries => {
+    const entry = entries[0];
+    if (entry.isIntersecting) {
+      document.body.classList.add('seccion-fiesta-activa');
+    } else {
+      document.body.classList.remove('seccion-fiesta-activa');
+    }
+  }, {
+    threshold: 0.5
+  });
+  if (fiestaSection) {
+    fiestaObserver.observe(fiestaSection);
+  }
+
+  // Mostrar secciones al hacer scroll
+  const sections = document.querySelectorAll('section');
+  const sectionObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.2 });
+
+  sections.forEach(section => {
+    sectionObserver.observe(section);
+  });
 });
 
-document.addEventListener('DOMContentLoaded', () => {
-    const fiestaSection = document.querySelector('.ceremonia-fiesta');
-  
-    const observer = new IntersectionObserver(entries => {
-      const entry = entries[0];
-      if (entry.isIntersecting) {
-        document.body.classList.add('seccion-fiesta-activa');
-      } else {
-        document.body.classList.remove('seccion-fiesta-activa');
-      }
-    }, {
-      threshold: 0.5 // Detecta cuando al menos el 50% de la sección es visible
-    });
-  
-    if (fiestaSection) {
-      observer.observe(fiestaSection);
-    }
-  });
-
-window.addEventListener('load', function() {
-    document.body.classList.add('loaded');
-  });
 // ============================
-// Mostrar secciones al hacer scroll
+// Marcar body como cargado al terminar
 // ============================
-document.addEventListener('DOMContentLoaded', function() {
-    const sections = document.querySelectorAll('section');
-  
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
-      });
-    }, { threshold: 0.2 });
-  
-    sections.forEach(section => {
-      observer.observe(section);
-    });
-  
-    // AOS existente
-    if (typeof AOS !== "undefined") {
-      AOS.init({
-        duration: 1000,
-        once: true
-      });
-    }
-  });
-
-  
-  
+window.addEventListener('load', function () {
+  document.body.classList.add('loaded');
+});
